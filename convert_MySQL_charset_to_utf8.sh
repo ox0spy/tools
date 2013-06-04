@@ -10,7 +10,7 @@ all_db='clid bigbrother'
 # process database and all table in those databases
 for db in $all_db
 do
-    echo "alter database $db charset = utf8" | $mysql_cmd
+    echo "ALTER DATABASE $db DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci" | $mysql_cmd
     mysql_cmd_with_db="$mysql_cmd -D $db"
     for x in $(echo 'show tables' | $mysql_cmd_with_db | \
         grep -Ev "^Tables_in_$db")
